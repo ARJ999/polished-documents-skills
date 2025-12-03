@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(pip install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(source venv/bin/activate)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(cat:*)",
+      "Skill(document-polisher)",
+      "Skill(docx)",
+      "Skill(pdf)",
+      "Skill(xlsx)",
+      "Skill(pptx)",
+      "Bash(python \".claude/skills/document-polisher/scripts/apply_brand.py\":*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
