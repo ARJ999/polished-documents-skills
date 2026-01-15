@@ -98,11 +98,17 @@ Invoke this skill when the user:
 ║                       │ Best for: Creative briefs, design docs, brand guidelines  ║
 ║                       │ Typography: Arial │ Colors: Purple #A259FF + Multi        ║
 ║                                                                                   ║
+║  REAL ESTATE & PROPERTY                                                           ║
+║  ─────────────────────                                                            ║
+║  11. Runwal           │ Premium heritage brand + sophisticated gold aesthetic     ║
+║                       │ Best for: Property brochures, investor reports, premium   ║
+║                       │ Typography: Georgia/Calibri │ Colors: Gold #B88815        ║
+║                                                                                   ║
 ╠═══════════════════════════════════════════════════════════════════════════════════╣
 ║  OPTIONS:                                                                         ║
-║  • Enter a number (1-10) for single brand styling                                 ║
+║  • Enter a number (1-11) for single brand styling                                 ║
 ║  • Enter multiple numbers (e.g., "1,3,5") for batch generation                    ║
-║  • Enter "all" to generate all 10 brand variants                                  ║
+║  • Enter "all" to generate all 11 brand variants                                  ║
 ║  • Enter "recommend" for AI-powered brand suggestion based on your content        ║
 ╚═══════════════════════════════════════════════════════════════════════════════════╝
 ```
@@ -170,6 +176,7 @@ After applying styling:
 | `linear` | Linear | Tech | Product specs, changelogs | #5E6AD2 (Purple) |
 | `notion` | Notion | Productivity | Wikis, project plans, docs | #2383E2 (Blue) |
 | `figma` | Figma | Design | Creative briefs, design docs | #A259FF (Purple) |
+| `runwal` | Runwal Enterprises | Real Estate | Property brochures, investor reports | #B88815 (Gold) |
 
 ## Intelligent Brand Recommendations
 
@@ -186,6 +193,8 @@ When user asks for a recommendation, analyze the document and suggest based on:
 | Internal Wiki/SOPs | Notion | Clean productivity, accessible |
 | Creative/Design Brief | Figma | Visual creativity, design-forward |
 | General Business | McKinsey or Deloitte | Safe professional choices |
+| Property/Real Estate | Runwal | Heritage premium, trust and excellence |
+| Investor Reports | Runwal, KPMG, or Deloitte | Premium authority, financial credibility |
 | Startup/Modern Tech | Linear or Stripe | Contemporary, innovative feel |
 
 ## What the Script Does
@@ -390,6 +399,15 @@ Heading 2: Arial 26pt, #1ABCFE (Blue), Bold
 Heading 3: Arial 16pt, #0ACF83 (Green), Bold
 Body: Arial 11pt, #1E1E1E
 Tables: Colorful accents
+```
+
+### Runwal Enterprises
+```
+Heading 1: Georgia 36pt, #B88815 (Gold), Bold
+Heading 2: Georgia 28pt, #222222 (Black), Bold
+Heading 3: Georgia 18pt, #222222 (Black), Bold
+Body: Calibri 11pt, #222222
+Tables: Elegant with gold accents
 ```
 
 ## Required Libraries

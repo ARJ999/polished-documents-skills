@@ -314,6 +314,39 @@
         "accentUse": "highlights_and_dividers"
       },
       "bestFor": ["creative briefs", "design docs", "brand guidelines", "style guides", "design specs"]
+    },
+    "runwal": {
+      "name": "Runwal Enterprises",
+      "description": "Premium real estate heritage brand with sophisticated gold and black aesthetic established in 1978. Perfect for property brochures, investor reports, corporate presentations, and premium documentation that demands trust and excellence.",
+      "category": "real_estate",
+      "colors": {
+        "primary": "#B88815",
+        "accent": "#222222",
+        "background": "#FFFCF7",
+        "textPrimary": "#222222",
+        "textSecondary": "#696B6D",
+        "tertiary": "#7AB8E4",
+        "quaternary": "#48372D"
+      },
+      "typography": {
+        "headingFont": "Georgia",
+        "bodyFont": "Calibri",
+        "headingWeight": "bold",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 36, "color": "#B88815", "bold": true},
+        "h2": {"size": 28, "color": "#222222", "bold": true},
+        "h3": {"size": 18, "color": "#222222", "bold": true},
+        "body": {"size": 11, "color": "#222222"},
+        "caption": {"size": 9, "color": "#696B6D", "italic": false}
+      },
+      "elements": {
+        "borderRadius": 0,
+        "tableStyle": "elegant",
+        "accentUse": "headers_and_highlights"
+      },
+      "bestFor": ["property brochures", "investor reports", "corporate presentations", "real estate documentation", "premium reports", "heritage documents"]
     }
   },
   "categories": {
@@ -341,6 +374,11 @@
       "name": "Design & Creativity",
       "description": "Design tools and creative documentation",
       "brands": ["figma"]
+    },
+    "real_estate": {
+      "name": "Real Estate & Property",
+      "description": "Premium real estate and property development",
+      "brands": ["runwal"]
     }
   },
   "recommendations": {
@@ -361,6 +399,10 @@
     "design_documentation": ["figma"],
     "brand_guidelines": ["figma"],
     "general_business": ["mckinsey", "deloitte"],
-    "startup": ["linear", "stripe", "notion"]
+    "startup": ["linear", "stripe", "notion"],
+    "property_brochure": ["runwal"],
+    "investor_report": ["runwal", "kpmg", "deloitte"],
+    "real_estate": ["runwal"],
+    "premium_report": ["runwal", "mckinsey"]
   }
 }

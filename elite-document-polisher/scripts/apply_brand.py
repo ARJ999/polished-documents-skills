@@ -350,19 +350,20 @@ class ProfessionalTableFormatter:
 
         # Define border styles
         border_color = self._get_border_color()
+        accent_border = self.accent_color.lstrip('#')
 
-        # Top border (medium)
+        # Top border (thick accent color for clear table start)
         top = OxmlElement('w:top')
         top.set(qn('w:val'), 'single')
-        top.set(qn('w:sz'), '8')  # 1pt
-        top.set(qn('w:color'), border_color)
+        top.set(qn('w:sz'), '12')  # 1.5pt - thicker for visual separation
+        top.set(qn('w:color'), accent_border)
         tblBorders.append(top)
 
-        # Bottom border (medium)
+        # Bottom border (thick accent color for clear table end)
         bottom = OxmlElement('w:bottom')
         bottom.set(qn('w:val'), 'single')
-        bottom.set(qn('w:sz'), '8')
-        bottom.set(qn('w:color'), border_color)
+        bottom.set(qn('w:sz'), '12')  # 1.5pt - thicker for visual separation
+        bottom.set(qn('w:color'), accent_border)
         tblBorders.append(bottom)
 
         # Left border (none or very light)
@@ -901,19 +902,19 @@ def apply_brand_to_docx(input_path: str, brand_name: str, output_path: str) -> T
             # Handle tables
             for tbl in source_doc.tables:
                 if tbl._tbl is element:
-                    # Add spacing before table
-                    spacer = doc.add_paragraph()
-                    spacer.paragraph_format.space_before = Pt(12)
-                    spacer.paragraph_format.space_after = Pt(0)
+                    # Add significant spacing BEFORE table to separate from previous content
+                    spacer_before = doc.add_paragraph()
+                    spacer_before.paragraph_format.space_before = Pt(18)
+                    spacer_before.paragraph_format.space_after = Pt(6)
 
                     # Copy table structure
                     new_table = _copy_table(doc, tbl, body_font, body_style['size'], text_color, accent_color)
                     tables_to_process.append(new_table)
 
-                    # Add spacing after table
-                    spacer = doc.add_paragraph()
-                    spacer.paragraph_format.space_before = Pt(0)
-                    spacer.paragraph_format.space_after = Pt(12)
+                    # Add significant spacing AFTER table to prevent merging with next table
+                    spacer_after = doc.add_paragraph()
+                    spacer_after.paragraph_format.space_before = Pt(6)
+                    spacer_after.paragraph_format.space_after = Pt(24)  # Increased from 12 to 24
                     break
 
     # ========================================================================
@@ -1065,7 +1066,8 @@ def display_brand_menu():
         'consulting': 'CONSULTING AUTHORITY',
         'tech': 'TECH INNOVATION',
         'productivity': 'PRODUCTIVITY & DESIGN',
-        'design': 'DESIGN & CREATIVITY'
+        'design': 'DESIGN & CREATIVITY',
+        'real_estate': 'REAL ESTATE & PROPERTY'
     }
 
     brands_by_category = {}
