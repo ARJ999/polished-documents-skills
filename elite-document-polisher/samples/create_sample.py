@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Sample Document Generator for Elite Document Polisher
+Enhanced Sample Document Generator for Elite Document Polisher v3.0
 
-This script creates a sample DOCX document with various elements
-to demonstrate the brand styling capabilities.
+Creates a comprehensive sample document with multiple tables of varying
+column counts to test the professional table formatting system.
 
 Usage:
     python create_sample.py
@@ -22,186 +22,230 @@ except ImportError:
 
 
 def create_sample_document():
-    """Create a comprehensive sample document for testing brand styles."""
+    """Create a comprehensive sample document with multiple table types."""
 
     doc = Document()
 
     # Title
     title = doc.add_paragraph()
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = title.add_run("Q4 2024 Strategic Performance Report")
+    run = title.add_run("Data Platform Implementation Strategy")
     run.bold = True
     title.style = 'Title'
 
     # Subtitle
     subtitle = doc.add_paragraph()
     subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = subtitle.add_run("Comprehensive Analysis and Forward-Looking Projections")
+    run = subtitle.add_run("Enterprise Analytics Modernization Initiative")
     subtitle.style = 'Subtitle'
 
-    # Executive Summary (H1)
+    # Executive Summary
     doc.add_heading("Executive Summary", level=1)
 
     doc.add_paragraph(
-        "This report presents a comprehensive analysis of our Q4 2024 performance "
-        "across all business units. Key highlights include a 23% year-over-year "
-        "revenue growth, successful expansion into three new markets, and the "
-        "launch of our flagship product line which exceeded initial projections by 40%."
+        "This document outlines our comprehensive strategy for implementing a modern "
+        "data platform that will transform how our organization leverages data for "
+        "decision-making. The initiative encompasses data lakehouse architecture, "
+        "AI/ML capabilities, and enterprise-wide analytics democratization."
     )
+
+    # Platform Capabilities - 2 Column Table
+    doc.add_heading("Platform Capabilities", level=2)
 
     doc.add_paragraph(
-        "Our strategic initiatives delivered exceptional results, with customer "
-        "satisfaction scores reaching an all-time high of 94%. The following sections "
-        "provide detailed analysis and actionable recommendations for sustaining "
-        "this momentum into 2025."
+        "The following table summarizes the core capabilities of our proposed "
+        "data platform and their direct business impact:"
     )
 
-    # Key Metrics (H2)
-    doc.add_heading("Key Performance Metrics", level=2)
+    # TABLE 1: 2 columns (like user's first table)
+    table1 = doc.add_table(rows=4, cols=2)
+    table1.style = 'Table Grid'
 
-    # Bullet list
-    doc.add_paragraph("Revenue: $47.3M (+23% YoY)", style='List Bullet')
-    doc.add_paragraph("Gross Margin: 68.2% (+3.1pp)", style='List Bullet')
-    doc.add_paragraph("Customer Acquisition: 12,400 new customers", style='List Bullet')
-    doc.add_paragraph("Net Promoter Score: 72 (+8 points)", style='List Bullet')
-    doc.add_paragraph("Employee Satisfaction: 4.6/5.0", style='List Bullet')
-
-    # Market Analysis (H1)
-    doc.add_heading("Market Analysis", level=1)
-
-    doc.add_paragraph(
-        "The global market environment presented both challenges and opportunities "
-        "during Q4. Despite macroeconomic headwinds, our positioning in key growth "
-        "segments allowed us to capture significant market share while maintaining "
-        "pricing discipline."
-    )
-
-    # Competitive Landscape (H2)
-    doc.add_heading("Competitive Landscape", level=2)
-
-    doc.add_paragraph(
-        "Our competitive position strengthened considerably this quarter. Market "
-        "research indicates we now hold the #2 position in our primary segment, "
-        "closing the gap with the market leader from 12% to just 7%."
-    )
-
-    # Regional Performance (H3)
-    doc.add_heading("Regional Performance Breakdown", level=3)
-
-    # Numbered list
-    doc.add_paragraph("North America: 45% of revenue, +18% growth", style='List Number')
-    doc.add_paragraph("Europe: 32% of revenue, +27% growth", style='List Number')
-    doc.add_paragraph("Asia-Pacific: 18% of revenue, +34% growth", style='List Number')
-    doc.add_paragraph("Rest of World: 5% of revenue, +12% growth", style='List Number')
-
-    # Table
-    doc.add_heading("Quarterly Revenue by Segment", level=2)
-
-    table = doc.add_table(rows=5, cols=4)
-    table.style = 'Table Grid'
-
-    # Header row
-    headers = ["Segment", "Q4 2024", "Q4 2023", "Change"]
-    for i, header in enumerate(headers):
-        table.rows[0].cells[i].text = header
+    # Header
+    table1.rows[0].cells[0].text = "Capability"
+    table1.rows[0].cells[1].text = "Business Impact"
 
     # Data rows
-    data = [
-        ["Enterprise", "$22.1M", "$17.8M", "+24.2%"],
-        ["Mid-Market", "$14.7M", "$12.1M", "+21.5%"],
-        ["SMB", "$8.2M", "$6.9M", "+18.8%"],
-        ["Consumer", "$2.3M", "$1.6M", "+43.8%"]
-    ]
+    table1.rows[1].cells[0].text = "Real-time data ingestion"
+    table1.rows[1].cells[1].text = "Instant insights on sales pipeline and customer behavior"
 
-    for row_idx, row_data in enumerate(data, start=1):
-        for col_idx, cell_text in enumerate(row_data):
-            table.rows[row_idx].cells[col_idx].text = cell_text
+    table1.rows[2].cells[0].text = "Semantic layer abstraction"
+    table1.rows[2].cells[1].text = "Business users can query data using natural language"
 
-    # Strategic Initiatives (H1)
-    doc.add_heading("Strategic Initiatives", level=1)
+    table1.rows[3].cells[0].text = "Built-in ML/AI capabilities"
+    table1.rows[3].cells[1].text = "Predictive models without data movement"
+
+    # Implementation Roadmap - 3 Column Table
+    doc.add_heading("Implementation Roadmap", level=2)
 
     doc.add_paragraph(
-        "Our strategic roadmap for 2024 focused on three pillars: product innovation, "
-        "market expansion, and operational excellence. Each pillar delivered "
-        "measurable results that position us well for continued growth."
+        "Our phased approach ensures minimal disruption while delivering "
+        "incremental value throughout the implementation journey:"
     )
 
-    # Product Innovation (H2)
-    doc.add_heading("Product Innovation", level=2)
+    # TABLE 2: 3 columns (like user's second table)
+    table2 = doc.add_table(rows=5, cols=3)
+    table2.style = 'Table Grid'
 
-    para = doc.add_paragraph()
-    para.add_run("Our R&D investments yielded significant breakthroughs. ").bold = False
-    para.add_run("The new AI-powered analytics module").bold = True
-    para.add_run(" launched in October and has already been adopted by 67% of enterprise customers.")
+    # Header
+    table2.rows[0].cells[0].text = "Phase"
+    table2.rows[0].cells[1].text = "Timeline"
+    table2.rows[0].cells[2].text = "Key Deliverables"
 
-    # Operational Excellence (H2)
-    doc.add_heading("Operational Excellence", level=2)
+    # Data rows
+    table2.rows[1].cells[0].text = "Foundation"
+    table2.rows[1].cells[1].text = "Q1 2026"
+    table2.rows[1].cells[2].text = "Data Lakehouse deployment, integration pipelines"
+
+    table2.rows[2].cells[0].text = "Intelligence"
+    table2.rows[2].cells[1].text = "Q2 2026"
+    table2.rows[2].cells[2].text = "Cortex AI analytics, semantic layer, natural language queries"
+
+    table2.rows[3].cells[0].text = "Optimization"
+    table2.rows[3].cells[1].text = "Q3 2026"
+    table2.rows[3].cells[2].text = "Predictive models, automated workflows, decision engines"
+
+    table2.rows[4].cells[0].text = "Scale"
+    table2.rows[4].cells[1].text = "Q4 2026"
+    table2.rows[4].cells[2].text = "Enterprise rollout, continuous improvement, advanced AI use cases"
+
+    # Investment Summary - 4 Column Table
+    doc.add_heading("Investment Summary", level=2)
 
     doc.add_paragraph(
-        "Process improvements and automation initiatives reduced operational costs "
-        "by 15% while improving service delivery times by 22%. Customer support "
-        "resolution rates improved from 89% to 96%."
+        "The following table provides a breakdown of investment requirements "
+        "across different categories:"
     )
 
-    # Financial Overview (H1)
-    doc.add_heading("Financial Overview", level=1)
+    # TABLE 3: 4 columns
+    table3 = doc.add_table(rows=5, cols=4)
+    table3.style = 'Table Grid'
 
-    doc.add_heading("Revenue Composition", level=2)
+    # Header
+    table3.rows[0].cells[0].text = "Category"
+    table3.rows[0].cells[1].text = "Year 1"
+    table3.rows[0].cells[2].text = "Year 2"
+    table3.rows[0].cells[3].text = "Year 3"
 
-    doc.add_paragraph("Subscription Revenue: $38.4M (81.2%)", style='List Bullet')
-    doc.add_paragraph("Professional Services: $6.2M (13.1%)", style='List Bullet')
-    doc.add_paragraph("Partner Ecosystem: $2.7M (5.7%)", style='List Bullet')
+    # Data rows
+    table3.rows[1].cells[0].text = "Platform Licensing"
+    table3.rows[1].cells[1].text = "$450,000"
+    table3.rows[1].cells[2].text = "$425,000"
+    table3.rows[1].cells[3].text = "$400,000"
 
-    doc.add_heading("Investment Areas", level=3)
+    table3.rows[2].cells[0].text = "Implementation Services"
+    table3.rows[2].cells[1].text = "$280,000"
+    table3.rows[2].cells[2].text = "$120,000"
+    table3.rows[2].cells[3].text = "$80,000"
+
+    table3.rows[3].cells[0].text = "Training & Change Management"
+    table3.rows[3].cells[1].text = "$95,000"
+    table3.rows[3].cells[2].text = "$45,000"
+    table3.rows[3].cells[3].text = "$25,000"
+
+    table3.rows[4].cells[0].text = "Total Investment"
+    table3.rows[4].cells[1].text = "$825,000"
+    table3.rows[4].cells[2].text = "$590,000"
+    table3.rows[4].cells[3].text = "$505,000"
+
+    # Key Benefits
+    doc.add_heading("Key Benefits", level=2)
+
+    doc.add_paragraph("The platform will deliver the following strategic benefits:")
+
+    doc.add_paragraph("Unified data foundation eliminating silos across departments", style='List Bullet')
+    doc.add_paragraph("Self-service analytics empowering business users", style='List Bullet')
+    doc.add_paragraph("AI-powered insights driving proactive decision-making", style='List Bullet')
+    doc.add_paragraph("Reduced time-to-insight from weeks to minutes", style='List Bullet')
+    doc.add_paragraph("Scalable architecture supporting future growth", style='List Bullet')
+
+    # Risk Assessment
+    doc.add_heading("Risk Assessment", level=2)
 
     doc.add_paragraph(
-        "Strategic investments totaled $12.3M during Q4, focused primarily on "
-        "product development (62%), go-to-market expansion (24%), and infrastructure "
-        "modernization (14%)."
+        "We have identified and developed mitigation strategies for the "
+        "following key risks:"
     )
 
-    # Recommendations (H1)
-    doc.add_heading("Recommendations and Next Steps", level=1)
+    # Risk table - 3 columns
+    table4 = doc.add_table(rows=4, cols=3)
+    table4.style = 'Table Grid'
 
-    para = doc.add_paragraph()
-    para.add_run("Based on our Q4 performance and market analysis, we recommend the following ").bold = False
-    para.add_run("priority initiatives").bold = True
-    para.add_run(" for Q1 2025:").bold = False
+    table4.rows[0].cells[0].text = "Risk"
+    table4.rows[0].cells[1].text = "Impact"
+    table4.rows[0].cells[2].text = "Mitigation"
 
-    doc.add_paragraph("Accelerate enterprise sales team expansion in EMEA", style='List Number')
-    doc.add_paragraph("Launch Phase 2 of the AI analytics platform", style='List Number')
-    doc.add_paragraph("Complete integration of recently acquired technology assets", style='List Number')
-    doc.add_paragraph("Implement customer success program enhancements", style='List Number')
-    doc.add_paragraph("Finalize strategic partnership with key ecosystem players", style='List Number')
+    table4.rows[1].cells[0].text = "Data quality issues"
+    table4.rows[1].cells[1].text = "High"
+    table4.rows[1].cells[2].text = "Automated data quality monitoring and remediation"
 
-    # Conclusion (H1)
+    table4.rows[2].cells[0].text = "User adoption resistance"
+    table4.rows[2].cells[1].text = "Medium"
+    table4.rows[2].cells[2].text = "Comprehensive training program and change champions"
+
+    table4.rows[3].cells[0].text = "Integration complexity"
+    table4.rows[3].cells[1].text = "Medium"
+    table4.rows[3].cells[2].text = "Phased approach with proven integration patterns"
+
+    # Success Metrics
+    doc.add_heading("Success Metrics", level=2)
+
+    doc.add_paragraph(
+        "We will measure success through the following key performance indicators:"
+    )
+
+    doc.add_paragraph("Data availability: 99.9% uptime for critical data assets", style='List Number')
+    doc.add_paragraph("User adoption: 80% of target users actively using the platform", style='List Number')
+    doc.add_paragraph("Time-to-insight: 75% reduction in average reporting time", style='List Number')
+    doc.add_paragraph("Data quality: 95% accuracy score across all data domains", style='List Number')
+
+    # Next Steps
+    doc.add_heading("Next Steps", level=1)
+
+    doc.add_paragraph(
+        "To move forward with this initiative, we recommend the following "
+        "immediate actions:"
+    )
+
+    doc.add_paragraph("Secure executive sponsorship and budget approval", style='List Number')
+    doc.add_paragraph("Form cross-functional steering committee", style='List Number')
+    doc.add_paragraph("Finalize vendor selection and contract negotiations", style='List Number')
+    doc.add_paragraph("Initiate Phase 1 planning and resource allocation", style='List Number')
+    doc.add_paragraph("Establish governance framework and data stewardship model", style='List Number')
+
+    # Conclusion
     doc.add_heading("Conclusion", level=1)
 
     doc.add_paragraph(
-        "Q4 2024 demonstrated the strength of our strategic direction and the "
-        "effectiveness of our execution. With strong fundamentals, a clear roadmap, "
-        "and a dedicated team, we are well-positioned to achieve our ambitious "
-        "goals for 2025 and beyond."
+        "This data platform initiative represents a transformational opportunity "
+        "for our organization. By investing in modern data infrastructure and "
+        "AI capabilities, we will establish a competitive advantage that enables "
+        "faster, more informed decision-making across all business functions."
     )
 
     para = doc.add_paragraph()
-    para.add_run("We appreciate your continued support and look forward to delivering ").bold = False
-    para.add_run("exceptional results").italic = True
-    para.add_run(" in the coming quarters.").bold = False
+    para.add_run("We are confident that this investment will deliver ").bold = False
+    para.add_run("substantial returns").bold = True
+    para.add_run(" within the first year of full deployment and position our "
+                 "organization as a data-driven leader in our industry.").bold = False
 
     # Save document
     output_path = "sample_report.docx"
     doc.save(output_path)
-    print(f"Sample document created: {output_path}")
+    print(f"Enhanced sample document created: {output_path}")
     print("\nDocument includes:")
     print("  - Title and Subtitle")
     print("  - Heading 1, 2, and 3 levels")
     print("  - Regular paragraphs")
     print("  - Bullet lists")
     print("  - Numbered lists")
-    print("  - Tables with headers")
+    print("  - 4 TABLES with varying column counts:")
+    print("      Table 1: 2 columns (Capability | Impact)")
+    print("      Table 2: 3 columns (Phase | Timeline | Deliverables)")
+    print("      Table 3: 4 columns (Category | Year 1 | Year 2 | Year 3)")
+    print("      Table 4: 3 columns (Risk | Impact | Mitigation)")
     print("  - Bold and italic formatting")
-    print("\nReady for brand styling!")
+    print("\nReady for brand styling with professional table formatting!")
 
 
 if __name__ == "__main__":
