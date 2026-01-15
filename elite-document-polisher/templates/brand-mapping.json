@@ -350,34 +350,56 @@
     },
     "idbibank": {
       "name": "IDBI Bank",
-      "description": "Government development bank aesthetic with viridian green trust and princeton orange energy. Perfect for financial reports, government documents, development proposals, banking communications, and institutional documentation that demands credibility and progressive vision.",
+      "description": "Government development bank aesthetic with IDBI Teal trust and Orange energy. Based on official Q2 FY2025-26 brand guidelines. TOGS principle: Teal headers, Orange accents, Green indicators, Simple clean layouts. Perfect for investor presentations, financial reports, government documents, development proposals, and institutional documentation demanding credibility and progressive vision.",
       "category": "banking",
+      "tagline": {
+        "hindi": "प्रगति हेतु प्रतिबद्ध, सतत संरक्षण के लिए समर्पित",
+        "english": "COMMITTED TO PROGRESS, DEDICATED TO SUSTAINABILITY"
+      },
       "colors": {
-        "primary": "#00836C",
-        "accent": "#F58220",
+        "primary": "#008B8B",
+        "accent": "#F7941D",
         "background": "#FFFFFF",
-        "textPrimary": "#1A3A34",
-        "textSecondary": "#4A5568"
+        "textPrimary": "#333333",
+        "textSecondary": "#808080",
+        "logoGreen": "#2E7D32",
+        "corporateBrown": "#8B4513",
+        "lightTeal": "#20B2AA",
+        "accentCyan": "#00CED1",
+        "lightGrey": "#F5F5F5",
+        "positiveGreen": "#228B22",
+        "negativeRed": "#DC143C"
       },
       "typography": {
-        "headingFont": "Calibri",
-        "bodyFont": "Calibri",
+        "headingFont": "Arial",
+        "bodyFont": "Arial",
         "headingWeight": "bold",
         "bodyWeight": "normal"
       },
       "styles": {
-        "h1": {"size": 36, "color": "#00836C", "bold": true},
-        "h2": {"size": 28, "color": "#1A3A34", "bold": true},
-        "h3": {"size": 18, "color": "#1A3A34", "bold": true},
-        "body": {"size": 11, "color": "#1A3A34"},
-        "caption": {"size": 9, "color": "#4A5568", "italic": false}
+        "h1": {"size": 30, "color": "#008B8B", "bold": true},
+        "h2": {"size": 24, "color": "#333333", "bold": true},
+        "h3": {"size": 18, "color": "#333333", "bold": true},
+        "body": {"size": 12, "color": "#333333"},
+        "caption": {"size": 9, "color": "#808080", "italic": false},
+        "tableHeader": {"size": 11, "color": "#FFFFFF", "bold": true, "background": "#008B8B"},
+        "tableData": {"size": 11, "color": "#333333"}
       },
       "elements": {
-        "borderRadius": 4,
-        "tableStyle": "professional_banking",
-        "accentUse": "headers_and_highlights"
+        "borderRadius": 0,
+        "tableStyle": "professional_banking_teal",
+        "accentUse": "footer_line_and_highlights",
+        "alternatingRowColor": "#F5F5F5"
       },
-      "bestFor": ["financial reports", "government documents", "development proposals", "banking communications", "annual reports", "institutional documentation"]
+      "brandRules": {
+        "headerStyle": "Teal background with white text",
+        "footerAccent": "Orange accent line (signature element)",
+        "colorRule": "70-20-10: 70% Teal/White, 20% Orange, 10% Secondary",
+        "tableHeaders": "IDBI Teal background with white bold text",
+        "positiveIndicator": "Green #228B22 with ▲",
+        "negativeIndicator": "Red #DC143C with ▼"
+      },
+      "bestFor": ["investor presentations", "financial reports", "government documents", "development proposals", "banking communications", "annual reports", "institutional documentation", "regulatory filings"]
     }
   },
   "categories": {

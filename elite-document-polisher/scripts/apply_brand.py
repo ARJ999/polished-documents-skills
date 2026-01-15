@@ -216,8 +216,11 @@ class ProfessionalTableFormatter:
         self.accent_color = brand_config['colors']['accent']
         self.text_color = brand_config['colors']['textPrimary']
         self.secondary_text = brand_config['colors']['textSecondary']
+        self.background_color = brand_config['colors'].get('background', '#FFFFFF')
         self.body_font = brand_config['typography']['bodyFont']
         self.body_size = brand_config['styles']['body']['size']
+        # Support brand-specific alternating row color (e.g., IDBI uses #F5F5F5)
+        self.alt_row_color = brand_config.get('elements', {}).get('alternatingRowColor', None)
 
     def format_table(self, table: Table, table_index: int = 0) -> None:
         """Apply professional formatting to a table."""
@@ -399,31 +402,37 @@ class ProfessionalTableFormatter:
         return self.secondary_text.lstrip('#')
 
     def _format_header_row(self, table: Table) -> None:
-        """Format the header row with professional styling."""
+        """Format the header row with professional brand-colored styling."""
         if not table.rows:
             return
 
         header_row = table.rows[0]
 
-        # Add bottom border to header row (stronger than body borders)
+        # Apply brand primary color as header background with contrasting text
+        header_bg_color = self.primary_color.lstrip('#')
+
         for cell in header_row.cells:
+            # Set header background to brand primary color
+            self._set_cell_shading(cell, header_bg_color)
+
+            # Add bottom border (stronger than body borders)
             self._set_cell_borders(cell, bottom_sz='12', bottom_color=self.accent_color.lstrip('#'))
 
-            # Style header text
+            # Style header text - WHITE for contrast against brand background
             for para in cell.paragraphs:
                 for run in para.runs:
                     run.bold = True
-                    run.font.color.rgb = hex_to_rgb(self.accent_color)
+                    run.font.color.rgb = RGBColor(255, 255, 255)  # White text for contrast
                     run.font.size = Pt(self.body_size)
                     set_font_name(run, self.body_font)
 
     def _format_body_rows(self, table: Table) -> None:
-        """Format body rows with optional alternating colors."""
+        """Format body rows with brand-aware alternating colors."""
         if len(table.rows) < 2:
             return
 
-        # Light gray for alternating rows
-        alt_color = "F8F9FA"  # Very subtle gray
+        # Generate brand-aware alternating row color from background
+        alt_color = self._get_alternating_row_color()
 
         for i, row in enumerate(table.rows[1:], start=1):
             # Apply alternating background (every other row)
@@ -438,6 +447,43 @@ class ProfessionalTableFormatter:
                         run.font.color.rgb = hex_to_rgb(self.text_color)
                         run.font.size = Pt(self.body_size)
                         set_font_name(run, self.body_font)
+
+    def _get_alternating_row_color(self) -> str:
+        """
+        Generate brand-aware alternating row color.
+        Uses brand-specific color if defined, otherwise creates subtle tint.
+        """
+        # If brand specifies exact alternating row color, use it (e.g., IDBI #F5F5F5)
+        if self.alt_row_color:
+            return self.alt_row_color.lstrip('#')
+
+        bg = self.background_color.lstrip('#')
+        primary = self.primary_color.lstrip('#')
+
+        # Parse background color
+        bg_r = int(bg[0:2], 16)
+        bg_g = int(bg[2:4], 16)
+        bg_b = int(bg[4:6], 16)
+
+        # Parse primary color for subtle tinting
+        pr_r = int(primary[0:2], 16)
+        pr_g = int(primary[2:4], 16)
+        pr_b = int(primary[4:6], 16)
+
+        # For warm backgrounds (like Runwal cream #FFFCF7), darken slightly
+        # For pure white backgrounds, add a subtle tint from primary color
+        if bg_r > 250 and bg_g > 250 and bg_b > 250:
+            # Pure white - add 3% primary color tint
+            alt_r = min(255, int(bg_r * 0.97 + pr_r * 0.03))
+            alt_g = min(255, int(bg_g * 0.97 + pr_g * 0.03))
+            alt_b = min(255, int(bg_b * 0.97 + pr_b * 0.03))
+        else:
+            # Warm/colored background - darken by 2%
+            alt_r = max(0, int(bg_r * 0.98))
+            alt_g = max(0, int(bg_g * 0.98))
+            alt_b = max(0, int(bg_b * 0.98))
+
+        return f"{alt_r:02X}{alt_g:02X}{alt_b:02X}"
 
     def _set_cell_borders(self, cell: _Cell, **kwargs) -> None:
         """Set individual cell borders."""
@@ -958,7 +1004,7 @@ def _copy_runs(source_para, dest_para, font_name: str, font_size: int, color: RG
 
 def _copy_table(doc: Document, source_table, body_font: str, body_size: int,
                 text_color: RGBColor, accent_color: RGBColor) -> Table:
-    """Copy table with proper structure."""
+    """Copy table with proper structure and brand-ready styling."""
     rows = len(source_table.rows)
     cols = len(source_table.columns)
 
@@ -984,8 +1030,9 @@ def _copy_table(doc: Document, source_table, body_font: str, body_size: int,
                         new_run.font.size = Pt(body_size)
 
                         if i == 0:
+                            # Header row: white text (will have brand primary background)
                             new_run.font.bold = True
-                            new_run.font.color.rgb = accent_color
+                            new_run.font.color.rgb = RGBColor(255, 255, 255)
                         else:
                             new_run.font.color.rgb = text_color
 
