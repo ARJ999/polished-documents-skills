@@ -844,6 +844,59 @@ def apply_brand_to_docx(input_path: str, brand_name: str, output_path: str) -> T
         section.left_margin = Inches(1.25)
         section.right_margin = Inches(1.25)
 
+        # Add branded header
+        header = section.header
+        header_para = header.paragraphs[0] if header.paragraphs else header.add_paragraph()
+        header_para.clear()
+        header_para.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+
+        # Add brand name in header with primary color
+        brand_name_display = brand.get('name', brand_name.title())
+        header_run = header_para.add_run(brand_name_display)
+        set_font_name(header_run, heading_font)
+        header_run.font.size = Pt(10)
+        header_run.font.color.rgb = primary_color
+        header_run.font.bold = True
+
+        # Add footer with accent line
+        footer = section.footer
+        footer_para = footer.paragraphs[0] if footer.paragraphs else footer.add_paragraph()
+        footer_para.clear()
+
+        # Create accent line using border
+        pPr = footer_para._p.get_or_add_pPr()
+        pBdr = OxmlElement('w:pBdr')
+        top_border = OxmlElement('w:top')
+        top_border.set(qn('w:val'), 'single')
+        top_border.set(qn('w:sz'), '12')  # 1.5pt
+        top_border.set(qn('w:space'), '4')
+        top_border.set(qn('w:color'), brand['colors']['accent'].lstrip('#'))
+        pBdr.append(top_border)
+        pPr.append(pBdr)
+
+        footer_para.paragraph_format.space_before = Pt(6)
+        footer_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+        # Add page number
+        page_run = footer_para.add_run('Page ')
+        set_font_name(page_run, body_font)
+        page_run.font.size = Pt(9)
+        page_run.font.color.rgb = secondary_color
+
+        # Add PAGE field
+        fldChar1 = OxmlElement('w:fldChar')
+        fldChar1.set(qn('w:fldCharType'), 'begin')
+
+        instrText = OxmlElement('w:instrText')
+        instrText.text = "PAGE"
+
+        fldChar2 = OxmlElement('w:fldChar')
+        fldChar2.set(qn('w:fldCharType'), 'end')
+
+        page_run._r.append(fldChar1)
+        page_run._r.append(instrText)
+        page_run._r.append(fldChar2)
+
     # ========================================================================
     # COPY CONTENT WITH ENHANCED FORMATTING
     # ========================================================================
@@ -876,14 +929,32 @@ def apply_brand_to_docx(input_path: str, brand_name: str, output_path: str) -> T
                     doc.add_page_break()
                 first_h1_seen = True
                 new_para = doc.add_heading(para_text, level=1)
+                # Explicitly set heading font on all runs
+                for run in new_para.runs:
+                    set_font_name(run, heading_font)
+                    run.font.size = Pt(h1_style['size'])
+                    run.font.bold = h1_style.get('bold', True)
+                    run.font.color.rgb = hex_to_rgb(h1_style['color'])
                 typography_engine.apply_widow_orphan_control(new_para)
 
             elif style_name.startswith('Heading 2') or style_name == 'Heading 2':
                 new_para = doc.add_heading(para_text, level=2)
+                # Explicitly set heading font on all runs
+                for run in new_para.runs:
+                    set_font_name(run, heading_font)
+                    run.font.size = Pt(h2_style['size'])
+                    run.font.bold = h2_style.get('bold', True)
+                    run.font.color.rgb = hex_to_rgb(h2_style['color'])
                 typography_engine.apply_widow_orphan_control(new_para)
 
             elif style_name.startswith('Heading 3') or style_name == 'Heading 3':
                 new_para = doc.add_heading(para_text, level=3)
+                # Explicitly set heading font on all runs
+                for run in new_para.runs:
+                    set_font_name(run, heading_font)
+                    run.font.size = Pt(h3_style['size'])
+                    run.font.bold = h3_style.get('bold', True)
+                    run.font.color.rgb = hex_to_rgb(h3_style['color'])
                 typography_engine.apply_widow_orphan_control(new_para)
 
             elif style_name == 'Title':
@@ -935,14 +1006,27 @@ def apply_brand_to_docx(input_path: str, brand_name: str, output_path: str) -> T
                     new_run.font.color.rgb = secondary_color
 
             else:
-                # Regular paragraph
-                new_para = doc.add_paragraph()
-                if para.alignment:
-                    new_para.alignment = para.alignment
-                new_para.paragraph_format.space_before = Pt(0)
-                new_para.paragraph_format.space_after = Pt(10)
-                _copy_runs(para, new_para, body_font, body_style['size'], text_color)
-                typography_engine.apply_widow_orphan_control(new_para)
+                # Check if this looks like a section header (ALL CAPS, bold, short text)
+                is_section_header = _detect_section_header(para)
+
+                if is_section_header:
+                    # Treat as H2 section header
+                    new_para = doc.add_heading(para_text, level=2)
+                    for run in new_para.runs:
+                        set_font_name(run, heading_font)
+                        run.font.size = Pt(h2_style['size'])
+                        run.font.bold = h2_style.get('bold', True)
+                        run.font.color.rgb = hex_to_rgb(h2_style['color'])
+                    typography_engine.apply_widow_orphan_control(new_para)
+                else:
+                    # Regular paragraph
+                    new_para = doc.add_paragraph()
+                    if para.alignment:
+                        new_para.alignment = para.alignment
+                    new_para.paragraph_format.space_before = Pt(0)
+                    new_para.paragraph_format.space_after = Pt(10)
+                    _copy_runs_with_brand_icons(para, new_para, body_font, body_style['size'], text_color, primary_color, accent_color)
+                    typography_engine.apply_widow_orphan_control(new_para)
 
         elif element.tag == qn('w:tbl'):
             # Handle tables
@@ -985,6 +1069,100 @@ def apply_brand_to_docx(input_path: str, brand_name: str, output_path: str) -> T
     return output_path, quality_level, issues
 
 
+# Emoji to symbol mapping for brand-consistent icons
+EMOJI_REPLACEMENTS = {
+    '📞': '☎',  # Phone
+    '🚗': '●',  # Car/Vehicle - use bullet
+    '💰': '₹',  # Money
+    '✓': '✓',  # Checkmark - keep
+    '✔': '✓',  # Checkmark variant
+    '✅': '✓',  # Check box
+    '❌': '✗',  # X mark
+    '📧': '@',  # Email
+    '📍': '●',  # Location
+    '⭐': '★',  # Star
+    '🔹': '●',  # Diamond bullet
+    '🔸': '●',  # Orange diamond
+    '▶': '►',  # Play/arrow
+    '➡': '→',  # Right arrow
+    '⬆': '↑',  # Up arrow
+    '⬇': '↓',  # Down arrow
+    '📊': '▦',  # Chart
+    '📈': '↗',  # Trending up
+    '📉': '↘',  # Trending down
+    '💡': '●',  # Idea/bulb
+    '🏠': '⌂',  # House
+    '🏢': '▣',  # Building
+    '📄': '▢',  # Document
+    '📋': '▢',  # Clipboard
+    '🎯': '◎',  # Target
+    '⚡': '●',  # Lightning/energy
+    '🔒': '●',  # Lock/security
+    '💳': '▭',  # Card
+    '🏦': '▣',  # Bank
+}
+
+def _is_emoji(char: str) -> bool:
+    """Check if character is an emoji that needs replacement."""
+    code = ord(char)
+    # Emoji ranges
+    return (
+        0x1F300 <= code <= 0x1F9FF or  # Miscellaneous Symbols and Pictographs, Emoticons, etc.
+        0x2600 <= code <= 0x26FF or    # Misc symbols
+        0x2700 <= code <= 0x27BF or    # Dingbats
+        0x1F600 <= code <= 0x1F64F or  # Emoticons
+        0x1F680 <= code <= 0x1F6FF or  # Transport and Map
+        char in EMOJI_REPLACEMENTS
+    )
+
+def _replace_emojis_with_symbols(text: str) -> str:
+    """Replace emojis with brand-safe symbols."""
+    result = []
+    for char in text:
+        if char in EMOJI_REPLACEMENTS:
+            result.append(EMOJI_REPLACEMENTS[char])
+        elif _is_emoji(char):
+            result.append('●')  # Default to bullet for unknown emojis
+        else:
+            result.append(char)
+    return ''.join(result)
+
+def _detect_section_header(para) -> bool:
+    """
+    Detect if a paragraph looks like a section header.
+    Criteria: ALL CAPS, bold, short text (< 50 chars), no emojis in main text
+    """
+    text = para.text.strip()
+
+    # Must have text
+    if not text or len(text) > 60:
+        return False
+
+    # Check if text is predominantly uppercase (allowing numbers and symbols)
+    alpha_chars = [c for c in text if c.isalpha()]
+    if not alpha_chars:
+        return False
+
+    uppercase_ratio = sum(1 for c in alpha_chars if c.isupper()) / len(alpha_chars)
+    if uppercase_ratio < 0.8:  # At least 80% uppercase
+        return False
+
+    # Check if any run is bold
+    has_bold = any(run.bold for run in para.runs if run.text.strip())
+
+    # Common section header patterns
+    header_patterns = [
+        'KEY', 'HIGHLIGHTS', 'ELIGIBILITY', 'CRITERIA', 'FEATURES', 'BENEFITS',
+        'REQUIREMENTS', 'DOCUMENTS', 'PROCESS', 'CHARGES', 'FEES', 'TERMS',
+        'CONDITIONS', 'OVERVIEW', 'SUMMARY', 'DETAILS', 'SPECIFICATIONS',
+        'CONTACT', 'INFORMATION', 'ABOUT', 'INTRODUCTION', 'CONCLUSION'
+    ]
+
+    text_upper = text.upper()
+    matches_pattern = any(pattern in text_upper for pattern in header_patterns)
+
+    return has_bold or matches_pattern
+
 def _copy_runs(source_para, dest_para, font_name: str, font_size: int, color: RGBColor):
     """Copy runs from source to destination paragraph with formatting."""
     for run in source_para.runs:
@@ -1000,6 +1178,47 @@ def _copy_runs(source_para, dest_para, font_name: str, font_size: int, color: RG
             new_run.italic = True
         if run.underline:
             new_run.underline = True
+
+def _copy_runs_with_brand_icons(source_para, dest_para, font_name: str, font_size: int,
+                                 text_color: RGBColor, primary_color: RGBColor, accent_color: RGBColor):
+    """Copy runs with emoji replacement and brand-colored icons."""
+    for run in source_para.runs:
+        text = run.text
+        processed_text = _replace_emojis_with_symbols(text)
+
+        # Split text to handle icons separately
+        i = 0
+        while i < len(processed_text):
+            char = processed_text[i]
+
+            # Check if this is a symbol that should be colored with accent
+            if char in '●★►◎✓✗▦▣▢▭→↑↓↗↘⌂☎₹@':
+                # Add symbol with accent color
+                icon_run = dest_para.add_run(char)
+                set_font_name(icon_run, font_name)
+                icon_run.font.size = Pt(font_size)
+                icon_run.font.color.rgb = accent_color
+                i += 1
+            else:
+                # Collect regular text until next symbol
+                regular_text = []
+                while i < len(processed_text) and processed_text[i] not in '●★►◎✓✗▦▣▢▭→↑↓↗↘⌂☎₹@':
+                    regular_text.append(processed_text[i])
+                    i += 1
+
+                if regular_text:
+                    new_run = dest_para.add_run(''.join(regular_text))
+                    set_font_name(new_run, font_name)
+                    new_run.font.size = Pt(font_size)
+                    new_run.font.color.rgb = text_color
+
+                    # Preserve character formatting
+                    if run.bold:
+                        new_run.bold = True
+                    if run.italic:
+                        new_run.italic = True
+                    if run.underline:
+                        new_run.underline = True
 
 
 def _copy_table(doc: Document, source_table, body_font: str, body_size: int,
