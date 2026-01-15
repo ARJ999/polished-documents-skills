@@ -1,0 +1,113 @@
+SKILL: elite-document-polisher
+
+================================================================================
+                         ELITE DOCUMENT POLISHER
+              The World's Most Sophisticated Document Styling System
+================================================================================
+
+HOW TO USE:
+
+"Polish my document with [brand] style"
+
+or
+
+"Make this document look professional"
+
+================================================================================
+
+QUICK START EXAMPLES:
+
+1. SINGLE BRAND APPLICATION
+   "Hey Claude, polish my quarterly_report.docx with McKinsey style"
+
+2. MULTI-BRAND BATCH GENERATION
+   "Generate my proposal.docx in McKinsey, Deloitte, and Stripe styles"
+
+3. ALL BRAND VARIANTS
+   "Create all 10 brand versions of my document.docx"
+
+4. BRAND RECOMMENDATION
+   "Which style would work best for my financial audit report?"
+
+================================================================================
+
+AVAILABLE BRANDS (10):
+
+EDITORIAL
+  economist     - The Economist (Serif, Red/Navy)
+
+CONSULTING
+  mckinsey      - McKinsey & Company (Executive, Blue)
+  deloitte      - Deloitte (Modern, Teal)
+  kpmg          - KPMG (Corporate, Two-tone Blue)
+
+TECH
+  stripe        - Stripe (Developer, Navy/Purple)
+  apple         - Apple (Minimalist, Clean)
+  ibm           - IBM (Enterprise, Carbon Blue)
+  linear        - Linear (Modern, Purple)
+
+PRODUCTIVITY
+  notion        - Notion (Clean, Subtle Blue)
+
+DESIGN
+  figma         - Figma (Vibrant, Multi-color)
+
+================================================================================
+
+WHAT YOU'LL GET:
+
+Single Brand:
+  - report_mckinsey.docx  (Your document with McKinsey styling)
+
+Multi-Brand:
+  - proposal_mckinsey.docx
+  - proposal_deloitte.docx
+  - proposal_stripe.docx
+
+All Brands:
+  - document_economist.docx
+  - document_mckinsey.docx
+  - document_deloitte.docx
+  - document_kpmg.docx
+  - document_stripe.docx
+  - document_apple.docx
+  - document_ibm.docx
+  - document_linear.docx
+  - document_notion.docx
+  - document_figma.docx
+
+================================================================================
+
+BRAND RECOMMENDATIONS BY DOCUMENT TYPE:
+
+Financial/Audit Report     -> KPMG or Deloitte
+Strategy/Board Deck        -> McKinsey
+Analysis/Editorial         -> The Economist
+API/Technical Docs         -> Stripe or Linear
+Product Documentation      -> Apple
+Enterprise Technical       -> IBM
+Internal Wiki/SOPs         -> Notion
+Creative/Design Brief      -> Figma
+General Business           -> McKinsey or Deloitte
+Startup/Modern Tech        -> Linear or Stripe
+
+================================================================================
+
+ADVANCED USAGE:
+
+Command Line (if running directly):
+
+  # Single brand
+  python apply_brand.py report.docx mckinsey report_styled.docx
+
+  # Multiple brands
+  python apply_brand.py proposal.docx mckinsey,deloitte,stripe proposal
+
+  # All brands
+  python apply_brand.py document.docx all variants/document
+
+  # List brands
+  python apply_brand.py --list
+
+================================================================================

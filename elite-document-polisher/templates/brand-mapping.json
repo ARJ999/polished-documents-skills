@@ -1,0 +1,366 @@
+{
+  "version": "2.0.0",
+  "name": "Elite Document Polisher - Brand Configuration",
+  "description": "World-class brand styling configurations for premium document transformation",
+  "brands": {
+    "economist": {
+      "name": "The Economist",
+      "description": "Iconic editorial style with signature red accents and serif typography. Perfect for reports, analysis, thought leadership, and editorial content that demands intellectual gravitas.",
+      "category": "editorial",
+      "colors": {
+        "primary": "#E3120B",
+        "accent": "#1F2E7A",
+        "background": "#FFFFFF",
+        "textPrimary": "#0D0D0D",
+        "textSecondary": "#666666"
+      },
+      "typography": {
+        "headingFont": "Georgia",
+        "bodyFont": "Georgia",
+        "headingWeight": "bold",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 28, "color": "#E3120B", "bold": true},
+        "h2": {"size": 18, "color": "#1F2E7A", "bold": true},
+        "h3": {"size": 13, "color": "#0D0D0D", "bold": true},
+        "body": {"size": 11, "color": "#0D0D0D"},
+        "caption": {"size": 9, "color": "#666666", "italic": true}
+      },
+      "elements": {
+        "borderRadius": 0,
+        "tableStyle": "minimal",
+        "accentUse": "headers_only"
+      },
+      "bestFor": ["reports", "analysis", "thought leadership", "editorial", "research papers"]
+    },
+    "mckinsey": {
+      "name": "McKinsey & Company",
+      "description": "Premium consulting aesthetic with sharp corners and bold blue commanding presence. Ideal for strategy decks, executive summaries, board presentations, and C-suite communications.",
+      "category": "consulting",
+      "colors": {
+        "primary": "#2251FF",
+        "accent": "#051C2C",
+        "background": "#FFFFFF",
+        "textPrimary": "#051C2C",
+        "textSecondary": "#666666"
+      },
+      "typography": {
+        "headingFont": "Georgia",
+        "bodyFont": "Calibri",
+        "headingWeight": "bold",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 52, "color": "#051C2C", "bold": true},
+        "h2": {"size": 32, "color": "#051C2C", "bold": true},
+        "h3": {"size": 20, "color": "#051C2C", "bold": true},
+        "body": {"size": 11, "color": "#051C2C"},
+        "caption": {"size": 9, "color": "#666666", "italic": false}
+      },
+      "elements": {
+        "borderRadius": 0,
+        "tableStyle": "clean_lines",
+        "accentUse": "cta_and_highlights"
+      },
+      "bestFor": ["strategy", "executive summaries", "board presentations", "consulting", "business cases"]
+    },
+    "deloitte": {
+      "name": "Deloitte",
+      "description": "Modern professional aesthetic with teal-blue sophistication and pill-shaped elements. Great for audits, assessments, formal business reports, and professional services documentation.",
+      "category": "consulting",
+      "colors": {
+        "primary": "#007CB0",
+        "accent": "#0076A8",
+        "background": "#FFFFFF",
+        "textPrimary": "#000000",
+        "textSecondary": "#666666"
+      },
+      "typography": {
+        "headingFont": "Calibri",
+        "bodyFont": "Calibri",
+        "headingWeight": "bold",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 40, "color": "#007CB0", "bold": true},
+        "h2": {"size": 28, "color": "#007CB0", "bold": true},
+        "h3": {"size": 16, "color": "#000000", "bold": true},
+        "body": {"size": 11, "color": "#000000"},
+        "caption": {"size": 9, "color": "#666666", "italic": false}
+      },
+      "elements": {
+        "borderRadius": 8,
+        "tableStyle": "rounded",
+        "accentUse": "headers_and_callouts"
+      },
+      "bestFor": ["audits", "assessments", "formal reports", "professional services", "risk analysis"]
+    },
+    "kpmg": {
+      "name": "KPMG",
+      "description": "Bold corporate style with two-tone blue palette and condensed headings. Suitable for financial reports, compliance documentation, governance reports, and regulatory filings.",
+      "category": "consulting",
+      "colors": {
+        "primary": "#005EB8",
+        "accent": "#00338D",
+        "background": "#FFFFFF",
+        "textPrimary": "#00338D",
+        "textSecondary": "#666666"
+      },
+      "typography": {
+        "headingFont": "Calibri",
+        "bodyFont": "Calibri",
+        "headingWeight": "bold",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 42, "color": "#00338D", "bold": true},
+        "h2": {"size": 38, "color": "#00338D", "bold": true},
+        "h3": {"size": 16, "color": "#00338D", "bold": true},
+        "body": {"size": 11, "color": "#00338D"},
+        "caption": {"size": 9, "color": "#666666", "italic": false}
+      },
+      "elements": {
+        "borderRadius": 3,
+        "tableStyle": "rounded_modern",
+        "accentUse": "buttons_and_badges"
+      },
+      "bestFor": ["financial reports", "compliance", "governance", "regulatory", "tax documentation"]
+    },
+    "stripe": {
+      "name": "Stripe",
+      "description": "Tech-forward aesthetic with dark blue foundation and purple gradient accents. Perfect for API documentation, developer guides, technical specifications, and product documentation.",
+      "category": "tech",
+      "colors": {
+        "primary": "#0A2540",
+        "accent": "#635BFF",
+        "background": "#FFFFFF",
+        "textPrimary": "#0A2540",
+        "textSecondary": "#3F4B66"
+      },
+      "typography": {
+        "headingFont": "Arial",
+        "bodyFont": "Arial",
+        "headingWeight": "medium",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 32, "color": "#0A2540", "bold": true},
+        "h2": {"size": 24, "color": "#0A2540", "bold": true},
+        "h3": {"size": 16, "color": "#0A2540", "bold": true},
+        "body": {"size": 11, "color": "#0A2540"},
+        "caption": {"size": 9, "color": "#3F4B66", "italic": false}
+      },
+      "elements": {
+        "borderRadius": 16,
+        "tableStyle": "subtle_shadow",
+        "accentUse": "code_and_highlights"
+      },
+      "bestFor": ["API docs", "developer guides", "technical specs", "integration guides", "product specs"]
+    },
+    "apple": {
+      "name": "Apple",
+      "description": "Minimalist premium aesthetic with generous whitespace and clean typography. Ideal for product documentation, user guides, manuals, and consumer-facing technical content.",
+      "category": "tech",
+      "colors": {
+        "primary": "#0071E3",
+        "accent": "#0066CC",
+        "background": "#FFFFFF",
+        "textPrimary": "#1D1D1F",
+        "textSecondary": "#86868B"
+      },
+      "typography": {
+        "headingFont": "Arial",
+        "bodyFont": "Arial",
+        "headingWeight": "medium",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 32, "color": "#1D1D1F", "bold": false},
+        "h2": {"size": 24, "color": "#1D1D1F", "bold": false},
+        "h3": {"size": 16, "color": "#1D1D1F", "bold": true},
+        "body": {"size": 12, "color": "#1D1D1F"},
+        "caption": {"size": 10, "color": "#86868B", "italic": false}
+      },
+      "elements": {
+        "borderRadius": 12,
+        "tableStyle": "minimal_clean",
+        "accentUse": "links_only"
+      },
+      "bestFor": ["product docs", "user guides", "manuals", "support articles", "consumer documentation"]
+    },
+    "ibm": {
+      "name": "IBM",
+      "description": "Enterprise authority with Carbon design system influence. Best for technical documentation, enterprise reports, IT documentation, and large-scale organizational content.",
+      "category": "tech",
+      "colors": {
+        "primary": "#0F62FE",
+        "accent": "#161616",
+        "background": "#FFFFFF",
+        "textPrimary": "#161616",
+        "textSecondary": "#525252"
+      },
+      "typography": {
+        "headingFont": "Arial",
+        "bodyFont": "Arial",
+        "headingWeight": "bold",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 36, "color": "#161616", "bold": true},
+        "h2": {"size": 28, "color": "#161616", "bold": true},
+        "h3": {"size": 18, "color": "#161616", "bold": true},
+        "body": {"size": 12, "color": "#161616"},
+        "caption": {"size": 10, "color": "#525252", "italic": false}
+      },
+      "elements": {
+        "borderRadius": 0,
+        "tableStyle": "grid",
+        "accentUse": "cta_primary"
+      },
+      "bestFor": ["technical docs", "enterprise reports", "IT documentation", "system documentation", "architecture docs"]
+    },
+    "linear": {
+      "name": "Linear",
+      "description": "Ultra-modern aesthetic with purple sophistication and precise typography. Great for product specifications, changelogs, engineering documentation, and modern tech companies.",
+      "category": "tech",
+      "colors": {
+        "primary": "#5E6AD2",
+        "accent": "#A1A7C1",
+        "background": "#FFFFFF",
+        "textPrimary": "#1A1A1A",
+        "textSecondary": "#6B6B6B"
+      },
+      "typography": {
+        "headingFont": "Arial",
+        "bodyFont": "Arial",
+        "headingWeight": "medium",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 32, "color": "#1A1A1A", "bold": true},
+        "h2": {"size": 24, "color": "#1A1A1A", "bold": true},
+        "h3": {"size": 16, "color": "#1A1A1A", "bold": true},
+        "body": {"size": 11, "color": "#1A1A1A"},
+        "caption": {"size": 9, "color": "#6B6B6B", "italic": false}
+      },
+      "elements": {
+        "borderRadius": 8,
+        "tableStyle": "modern_subtle",
+        "accentUse": "badges_and_status"
+      },
+      "bestFor": ["product specs", "changelogs", "engineering docs", "release notes", "sprint documentation"]
+    },
+    "notion": {
+      "name": "Notion",
+      "description": "Clean productivity aesthetic with subtle blue accents and block-based visual language. Perfect for wikis, documentation, project plans, SOPs, and team knowledge bases.",
+      "category": "productivity",
+      "colors": {
+        "primary": "#2383E2",
+        "accent": "#0075DE",
+        "background": "#FFFFFF",
+        "textPrimary": "#191918",
+        "textSecondary": "#6B6B6B"
+      },
+      "typography": {
+        "headingFont": "Segoe UI",
+        "bodyFont": "Segoe UI",
+        "headingWeight": "bold",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 48, "color": "#191918", "bold": true},
+        "h2": {"size": 32, "color": "#191918", "bold": true},
+        "h3": {"size": 20, "color": "#191918", "bold": true},
+        "body": {"size": 12, "color": "#191918"},
+        "caption": {"size": 10, "color": "#6B6B6B", "italic": false}
+      },
+      "elements": {
+        "borderRadius": 5,
+        "tableStyle": "block_based",
+        "accentUse": "callouts_and_links"
+      },
+      "bestFor": ["wikis", "documentation", "project plans", "SOPs", "knowledge bases", "meeting notes"]
+    },
+    "figma": {
+      "name": "Figma",
+      "description": "Design-forward aesthetic with vibrant multi-color palette and creative energy. Ideal for creative briefs, design documentation, brand guidelines, and design team deliverables.",
+      "category": "design",
+      "colors": {
+        "primary": "#A259FF",
+        "accent": "#FF7262",
+        "background": "#FFFFFF",
+        "textPrimary": "#1E1E1E",
+        "textSecondary": "#6B6B6B",
+        "tertiary": "#1ABCFE",
+        "quaternary": "#0ACF83"
+      },
+      "typography": {
+        "headingFont": "Arial",
+        "bodyFont": "Arial",
+        "headingWeight": "bold",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 36, "color": "#A259FF", "bold": true},
+        "h2": {"size": 26, "color": "#1ABCFE", "bold": true},
+        "h3": {"size": 16, "color": "#0ACF83", "bold": true},
+        "body": {"size": 11, "color": "#1E1E1E"},
+        "caption": {"size": 10, "color": "#6B6B6B", "italic": false}
+      },
+      "elements": {
+        "borderRadius": 8,
+        "tableStyle": "colorful",
+        "accentUse": "highlights_and_dividers"
+      },
+      "bestFor": ["creative briefs", "design docs", "brand guidelines", "style guides", "design specs"]
+    }
+  },
+  "categories": {
+    "editorial": {
+      "name": "Editorial Excellence",
+      "description": "Publications and thought leadership",
+      "brands": ["economist"]
+    },
+    "consulting": {
+      "name": "Consulting Authority",
+      "description": "Professional services and business advisory",
+      "brands": ["mckinsey", "deloitte", "kpmg"]
+    },
+    "tech": {
+      "name": "Tech Innovation",
+      "description": "Technology companies and developer documentation",
+      "brands": ["stripe", "apple", "ibm", "linear"]
+    },
+    "productivity": {
+      "name": "Productivity & Collaboration",
+      "description": "Productivity tools and team documentation",
+      "brands": ["notion"]
+    },
+    "design": {
+      "name": "Design & Creativity",
+      "description": "Design tools and creative documentation",
+      "brands": ["figma"]
+    }
+  },
+  "recommendations": {
+    "financial_report": ["kpmg", "deloitte"],
+    "strategy_deck": ["mckinsey"],
+    "board_presentation": ["mckinsey", "deloitte"],
+    "analysis_report": ["economist"],
+    "thought_leadership": ["economist", "mckinsey"],
+    "api_documentation": ["stripe", "linear"],
+    "developer_guide": ["stripe", "linear", "ibm"],
+    "product_documentation": ["apple", "notion"],
+    "user_guide": ["apple", "notion"],
+    "technical_documentation": ["ibm", "stripe"],
+    "enterprise_report": ["ibm", "kpmg"],
+    "wiki": ["notion"],
+    "project_plan": ["notion", "linear"],
+    "creative_brief": ["figma"],
+    "design_documentation": ["figma"],
+    "brand_guidelines": ["figma"],
+    "general_business": ["mckinsey", "deloitte"],
+    "startup": ["linear", "stripe", "notion"]
+  }
+}
