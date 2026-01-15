@@ -347,6 +347,37 @@
         "accentUse": "headers_and_highlights"
       },
       "bestFor": ["property brochures", "investor reports", "corporate presentations", "real estate documentation", "premium reports", "heritage documents"]
+    },
+    "idbibank": {
+      "name": "IDBI Bank",
+      "description": "Government development bank aesthetic with viridian green trust and princeton orange energy. Perfect for financial reports, government documents, development proposals, banking communications, and institutional documentation that demands credibility and progressive vision.",
+      "category": "banking",
+      "colors": {
+        "primary": "#00836C",
+        "accent": "#F58220",
+        "background": "#FFFFFF",
+        "textPrimary": "#1A3A34",
+        "textSecondary": "#4A5568"
+      },
+      "typography": {
+        "headingFont": "Calibri",
+        "bodyFont": "Calibri",
+        "headingWeight": "bold",
+        "bodyWeight": "normal"
+      },
+      "styles": {
+        "h1": {"size": 36, "color": "#00836C", "bold": true},
+        "h2": {"size": 28, "color": "#1A3A34", "bold": true},
+        "h3": {"size": 18, "color": "#1A3A34", "bold": true},
+        "body": {"size": 11, "color": "#1A3A34"},
+        "caption": {"size": 9, "color": "#4A5568", "italic": false}
+      },
+      "elements": {
+        "borderRadius": 4,
+        "tableStyle": "professional_banking",
+        "accentUse": "headers_and_highlights"
+      },
+      "bestFor": ["financial reports", "government documents", "development proposals", "banking communications", "annual reports", "institutional documentation"]
     }
   },
   "categories": {
@@ -379,6 +410,11 @@
       "name": "Real Estate & Property",
       "description": "Premium real estate and property development",
       "brands": ["runwal"]
+    },
+    "banking": {
+      "name": "Banking & Financial Services",
+      "description": "Development banking and financial institutions",
+      "brands": ["idbibank"]
     }
   },
   "recommendations": {
@@ -403,6 +439,10 @@
     "property_brochure": ["runwal"],
     "investor_report": ["runwal", "kpmg", "deloitte"],
     "real_estate": ["runwal"],
-    "premium_report": ["runwal", "mckinsey"]
+    "premium_report": ["runwal", "mckinsey"],
+    "banking_report": ["idbibank", "kpmg"],
+    "government_document": ["idbibank", "ibm"],
+    "development_proposal": ["idbibank", "deloitte"],
+    "institutional_report": ["idbibank", "kpmg", "deloitte"]
   }
 }

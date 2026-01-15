@@ -1,6 +1,6 @@
 ---
 name: elite-document-polisher
-description: "The world's most sophisticated DOCX document styling system v3.0 - God-Level Flawless Edition. Transform any document into a professionally-styled masterpiece using 10 premium brand aesthetics from the world's finest organizations (The Economist, McKinsey, Deloitte, KPMG, Stripe, Apple, IBM, Linear, Notion, Figma). Features: single-brand styling, multi-brand batch generation, QUALITY VALIDATION ensuring only flawless documents, professional table formatting with consistent widths, golden-ratio typography, and orphan/widow control. Use when users want to: (1) Apply world-class brand styling to documents, (2) Generate multiple brand variants of the same document, (3) Make documents look professionally polished, (4) Match specific brand visual identities, (5) Create executive-ready reports, proposals, or presentations."
+description: "The world's most sophisticated DOCX document styling system v3.0 - God-Level Flawless Edition. Transform any document into a professionally-styled masterpiece using 12 premium brand aesthetics from the world's finest organizations (The Economist, McKinsey, Deloitte, KPMG, Stripe, Apple, IBM, Linear, Notion, Figma, Runwal Enterprises, IDBI Bank). Features: single-brand styling, multi-brand batch generation, QUALITY VALIDATION ensuring only flawless documents, professional table formatting with consistent widths, golden-ratio typography, and orphan/widow control. Use when users want to: (1) Apply world-class brand styling to documents, (2) Generate multiple brand variants of the same document, (3) Make documents look professionally polished, (4) Match specific brand visual identities, (5) Create executive-ready reports, proposals, or presentations."
 ---
 
 # Elite Document Polisher v3.0
@@ -11,7 +11,7 @@ Transform any document into a professionally-styled masterpiece using world-clas
 
 ## What This Skill Does
 
-The Elite Document Polisher is the definitive tool for applying premium brand styling to DOCX documents. It analyzes your document's content and purpose, then applies sophisticated typography, color schemes, and formatting from 10 meticulously researched brand identities representing the pinnacle of professional document design.
+The Elite Document Polisher is the definitive tool for applying premium brand styling to DOCX documents. It analyzes your document's content and purpose, then applies sophisticated typography, color schemes, and formatting from 12 meticulously researched brand identities representing the pinnacle of professional document design.
 
 **Key Capabilities:**
 - Apply single brand styling with one command
@@ -104,11 +104,17 @@ Invoke this skill when the user:
 ║                       │ Best for: Property brochures, investor reports, premium   ║
 ║                       │ Typography: Georgia/Calibri │ Colors: Gold #B88815        ║
 ║                                                                                   ║
+║  BANKING & FINANCIAL SERVICES                                                     ║
+║  ────────────────────────────                                                     ║
+║  12. IDBI Bank        │ Government development bank + green/orange energy         ║
+║                       │ Best for: Financial reports, government docs, banking     ║
+║                       │ Typography: Calibri │ Colors: Green #00836C + Orange      ║
+║                                                                                   ║
 ╠═══════════════════════════════════════════════════════════════════════════════════╣
 ║  OPTIONS:                                                                         ║
-║  • Enter a number (1-11) for single brand styling                                 ║
+║  • Enter a number (1-12) for single brand styling                                 ║
 ║  • Enter multiple numbers (e.g., "1,3,5") for batch generation                    ║
-║  • Enter "all" to generate all 11 brand variants                                  ║
+║  • Enter "all" to generate all 12 brand variants                                  ║
 ║  • Enter "recommend" for AI-powered brand suggestion based on your content        ║
 ╚═══════════════════════════════════════════════════════════════════════════════════╝
 ```
@@ -177,6 +183,7 @@ After applying styling:
 | `notion` | Notion | Productivity | Wikis, project plans, docs | #2383E2 (Blue) |
 | `figma` | Figma | Design | Creative briefs, design docs | #A259FF (Purple) |
 | `runwal` | Runwal Enterprises | Real Estate | Property brochures, investor reports | #B88815 (Gold) |
+| `idbibank` | IDBI Bank | Banking | Financial reports, government docs | #00836C (Green) |
 
 ## Intelligent Brand Recommendations
 
@@ -196,6 +203,9 @@ When user asks for a recommendation, analyze the document and suggest based on:
 | Property/Real Estate | Runwal | Heritage premium, trust and excellence |
 | Investor Reports | Runwal, KPMG, or Deloitte | Premium authority, financial credibility |
 | Startup/Modern Tech | Linear or Stripe | Contemporary, innovative feel |
+| Banking/Financial | IDBI Bank or KPMG | Institutional credibility, banking authority |
+| Government Documents | IDBI Bank or IBM | Official institutional aesthetic |
+| Development Proposals | IDBI Bank or Deloitte | Progressive professional credibility |
 
 ## What the Script Does
 
@@ -410,6 +420,15 @@ Body: Calibri 11pt, #222222
 Tables: Elegant with gold accents
 ```
 
+### IDBI Bank
+```
+Heading 1: Calibri 36pt, #00836C (Viridian Green), Bold
+Heading 2: Calibri 28pt, #1A3A34 (Deep Teal), Bold
+Heading 3: Calibri 18pt, #1A3A34 (Deep Teal), Bold
+Body: Calibri 11pt, #1A3A34
+Tables: Professional banking style with green accents
+```
+
 ## Required Libraries
 
 - **python-docx** - Core library for DOCX manipulation (`pip install python-docx`)
@@ -455,7 +474,7 @@ python scripts/apply_brand.py proposal.docx mckinsey,deloitte,stripe proposal
 
 ### Example 3: Generate All Variants
 
-**User prompt**: "Create all 10 brand versions of my document"
+**User prompt**: "Create all 12 brand versions of my document"
 
 **Claude will**:
 1. Confirm all-brand generation
@@ -463,7 +482,7 @@ python scripts/apply_brand.py proposal.docx mckinsey,deloitte,stripe proposal
 ```bash
 python scripts/apply_brand.py document.docx all document
 ```
-3. List all 10 generated files
+3. List all 12 generated files
 
 **Output files**:
 - `document_economist.docx`
@@ -476,6 +495,8 @@ python scripts/apply_brand.py document.docx all document
 - `document_linear.docx`
 - `document_notion.docx`
 - `document_figma.docx`
+- `document_runwal.docx`
+- `document_idbibank.docx`
 
 ---
 
@@ -521,7 +542,7 @@ python /path/to/elite-document-polisher/scripts/apply_brand.py input.docx brand 
 
 ### Brand Not Found Error
 Available brand names (case-insensitive):
-`economist`, `mckinsey`, `deloitte`, `kpmg`, `stripe`, `apple`, `ibm`, `linear`, `notion`, `figma`
+`economist`, `mckinsey`, `deloitte`, `kpmg`, `stripe`, `apple`, `ibm`, `linear`, `notion`, `figma`, `runwal`, `idbibank`
 
 ## File Structure
 
@@ -544,7 +565,9 @@ elite-document-polisher/
 │   ├── ibm.md                        # IBM brand details
 │   ├── linear.md                     # Linear brand details
 │   ├── notion.md                     # Notion brand details
-│   └── figma.md                      # Figma brand details
+│   ├── figma.md                      # Figma brand details
+│   ├── runwal.md                     # Runwal Enterprises brand details
+│   └── idbibank.md                   # IDBI Bank brand details
 └── samples/
     └── sample_report.docx            # Test document
 ```

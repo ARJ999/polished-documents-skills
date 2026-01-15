@@ -1067,7 +1067,8 @@ def display_brand_menu():
         'tech': 'TECH INNOVATION',
         'productivity': 'PRODUCTIVITY & DESIGN',
         'design': 'DESIGN & CREATIVITY',
-        'real_estate': 'REAL ESTATE & PROPERTY'
+        'real_estate': 'REAL ESTATE & PROPERTY',
+        'banking': 'BANKING & FINANCIAL SERVICES'
     }
 
     brands_by_category = {}
