@@ -399,21 +399,27 @@ class ProfessionalTableFormatter:
         return self.secondary_text.lstrip('#')
 
     def _format_header_row(self, table: Table) -> None:
-        """Format the header row with professional styling."""
+        """Format the header row with professional brand-colored styling."""
         if not table.rows:
             return
 
         header_row = table.rows[0]
 
-        # Add bottom border to header row (stronger than body borders)
+        # Apply brand primary color as header background with contrasting text
+        header_bg_color = self.primary_color.lstrip('#')
+
         for cell in header_row.cells:
+            # Set header background to brand primary color
+            self._set_cell_shading(cell, header_bg_color)
+
+            # Add bottom border (stronger than body borders)
             self._set_cell_borders(cell, bottom_sz='12', bottom_color=self.accent_color.lstrip('#'))
 
-            # Style header text
+            # Style header text - WHITE for contrast against brand background
             for para in cell.paragraphs:
                 for run in para.runs:
                     run.bold = True
-                    run.font.color.rgb = hex_to_rgb(self.accent_color)
+                    run.font.color.rgb = RGBColor(255, 255, 255)  # White text for contrast
                     run.font.size = Pt(self.body_size)
                     set_font_name(run, self.body_font)
 
@@ -958,7 +964,7 @@ def _copy_runs(source_para, dest_para, font_name: str, font_size: int, color: RG
 
 def _copy_table(doc: Document, source_table, body_font: str, body_size: int,
                 text_color: RGBColor, accent_color: RGBColor) -> Table:
-    """Copy table with proper structure."""
+    """Copy table with proper structure and brand-ready styling."""
     rows = len(source_table.rows)
     cols = len(source_table.columns)
 
@@ -984,8 +990,9 @@ def _copy_table(doc: Document, source_table, body_font: str, body_size: int,
                         new_run.font.size = Pt(body_size)
 
                         if i == 0:
+                            # Header row: white text (will have brand primary background)
                             new_run.font.bold = True
-                            new_run.font.color.rgb = accent_color
+                            new_run.font.color.rgb = RGBColor(255, 255, 255)
                         else:
                             new_run.font.color.rgb = text_color
 
