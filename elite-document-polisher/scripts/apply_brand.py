@@ -219,6 +219,8 @@ class ProfessionalTableFormatter:
         self.background_color = brand_config['colors'].get('background', '#FFFFFF')
         self.body_font = brand_config['typography']['bodyFont']
         self.body_size = brand_config['styles']['body']['size']
+        # Support brand-specific alternating row color (e.g., IDBI uses #F5F5F5)
+        self.alt_row_color = brand_config.get('elements', {}).get('alternatingRowColor', None)
 
     def format_table(self, table: Table, table_index: int = 0) -> None:
         """Apply professional formatting to a table."""
@@ -449,8 +451,12 @@ class ProfessionalTableFormatter:
     def _get_alternating_row_color(self) -> str:
         """
         Generate brand-aware alternating row color.
-        Creates a subtle tint based on the brand's background and primary colors.
+        Uses brand-specific color if defined, otherwise creates subtle tint.
         """
+        # If brand specifies exact alternating row color, use it (e.g., IDBI #F5F5F5)
+        if self.alt_row_color:
+            return self.alt_row_color.lstrip('#')
+
         bg = self.background_color.lstrip('#')
         primary = self.primary_color.lstrip('#')
 

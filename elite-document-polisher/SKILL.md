@@ -106,9 +106,9 @@ Invoke this skill when the user:
 ║                                                                                   ║
 ║  BANKING & FINANCIAL SERVICES                                                     ║
 ║  ────────────────────────────                                                     ║
-║  12. IDBI Bank        │ Government development bank + green/orange energy         ║
-║                       │ Best for: Financial reports, government docs, banking     ║
-║                       │ Typography: Calibri │ Colors: Green #00836C + Orange      ║
+║  12. IDBI Bank        │ TOGS: Teal headers, Orange accents, Green indicators      ║
+║                       │ Best for: Investor presentations, financial reports       ║
+║                       │ Typography: Arial │ Colors: Teal #008B8B + Orange #F7941D ║
 ║                                                                                   ║
 ╠═══════════════════════════════════════════════════════════════════════════════════╣
 ║  OPTIONS:                                                                         ║
@@ -183,7 +183,7 @@ After applying styling:
 | `notion` | Notion | Productivity | Wikis, project plans, docs | #2383E2 (Blue) |
 | `figma` | Figma | Design | Creative briefs, design docs | #A259FF (Purple) |
 | `runwal` | Runwal Enterprises | Real Estate | Property brochures, investor reports | #B88815 (Gold) |
-| `idbibank` | IDBI Bank | Banking | Financial reports, government docs | #00836C (Green) |
+| `idbibank` | IDBI Bank | Banking | Investor presentations, financial reports | #008B8B (Teal) |
 
 ## Intelligent Brand Recommendations
 
@@ -422,11 +422,14 @@ Tables: Elegant with gold accents
 
 ### IDBI Bank
 ```
-Heading 1: Calibri 36pt, #00836C (Viridian Green), Bold
-Heading 2: Calibri 28pt, #1A3A34 (Deep Teal), Bold
-Heading 3: Calibri 18pt, #1A3A34 (Deep Teal), Bold
-Body: Calibri 11pt, #1A3A34
-Tables: Professional banking style with green accents
+Heading 1: Arial 30pt, #008B8B (IDBI Teal), Bold
+Heading 2: Arial 24pt, #333333 (Dark Grey), Bold
+Heading 3: Arial 18pt, #333333 (Dark Grey), Bold
+Body: Arial 12pt, #333333 (Dark Grey)
+Caption: Arial 9pt, #808080 (Neutral Grey)
+Tables: Teal headers (#008B8B), White text, Light Grey (#F5F5F5) alternating rows
+Accent: Orange #F7941D (signature footer element)
+TOGS Principle: Teal headers, Orange accents, Green indicators, Simple layouts
 ```
 
 ## Required Libraries
