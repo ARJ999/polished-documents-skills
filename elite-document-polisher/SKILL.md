@@ -1,11 +1,13 @@
 ---
 name: elite-document-polisher
-description: "The world's most sophisticated DOCX document styling system. Transform any document into a professionally-styled masterpiece using 10 premium brand aesthetics from the world's finest organizations (The Economist, McKinsey, Deloitte, KPMG, Stripe, Apple, IBM, Linear, Notion, Figma). Features: single-brand styling, multi-brand batch generation, intelligent brand recommendations, and document content analysis. Use when users want to: (1) Apply world-class brand styling to documents, (2) Generate multiple brand variants of the same document, (3) Make documents look professionally polished, (4) Match specific brand visual identities, (5) Create executive-ready reports, proposals, or presentations."
+description: "The world's most sophisticated DOCX document styling system v3.0 - God-Level Flawless Edition. Transform any document into a professionally-styled masterpiece using 10 premium brand aesthetics from the world's finest organizations (The Economist, McKinsey, Deloitte, KPMG, Stripe, Apple, IBM, Linear, Notion, Figma). Features: single-brand styling, multi-brand batch generation, QUALITY VALIDATION ensuring only flawless documents, professional table formatting with consistent widths, golden-ratio typography, and orphan/widow control. Use when users want to: (1) Apply world-class brand styling to documents, (2) Generate multiple brand variants of the same document, (3) Make documents look professionally polished, (4) Match specific brand visual identities, (5) Create executive-ready reports, proposals, or presentations."
 ---
 
-# Elite Document Polisher
+# Elite Document Polisher v3.0
 
-Transform any document into a professionally-styled masterpiece using world-class brand aesthetics from the finest organizations on the planet.
+**God-Level Flawless Document Styling**
+
+Transform any document into a professionally-styled masterpiece using world-class brand aesthetics from the finest organizations on the planet. Now with quality validation ensuring only flawless documents are delivered.
 
 ## What This Skill Does
 
@@ -17,6 +19,15 @@ The Elite Document Polisher is the definitive tool for applying premium brand st
 - Receive intelligent brand recommendations based on document content
 - Preserve all original formatting, structure, and content integrity
 - Professional table styling, heading hierarchies, and whitespace management
+
+**v3.0 God-Level Features:**
+- **Quality Validation**: Pre-output checks ensure only flawless documents are presented
+- **Professional Table Formatting**: All tables span full width with intelligent column sizing
+- **Minimal Vertical Borders**: Clean, modern table aesthetic without visual clutter
+- **Alternating Row Colors**: Subtle shading for improved readability
+- **Golden Ratio Typography**: Spacing calculated using mathematical harmony
+- **Orphan/Widow Control**: No lonely lines at page breaks
+- **Consistent Cell Padding**: Professional spacing in all table cells
 
 ## When to Use
 
@@ -199,7 +210,95 @@ The `apply_brand.py` script performs these operations:
    - Keeps bullet and numbered lists
    - Preserves paragraph alignment
    - Copies tables with styling
-6. **Saves as New File** (never overwrites original)
+6. **Applies Professional Table Formatting** (v3.0):
+   - Sets all tables to 100% content width
+   - Optimizes column widths based on content analysis
+   - Applies minimal vertical borders (clean modern look)
+   - Formats header row with accent color
+   - Adds alternating row shading
+   - Sets consistent cell padding
+7. **Runs Quality Validation** (v3.0):
+   - Checks typography for orphans/widows
+   - Validates table structure
+   - Ensures spacing consistency
+   - Verifies heading hierarchy
+   - Reports quality level (PERFECT, ACCEPTABLE, NEEDS_ATTENTION, FAILED)
+8. **Saves as New File** (never overwrites original)
+
+## Quality Validation System (v3.0)
+
+The script includes a comprehensive quality validation system that ensures only flawless documents are delivered:
+
+### Quality Levels
+
+| Level | Description |
+|-------|-------------|
+| **PERFECT** | No issues detected - document is flawless |
+| **ACCEPTABLE** | Minor issues detected but auto-corrected |
+| **NEEDS_ATTENTION** | Some issues require manual review |
+| **FAILED** | Critical issues prevent quality output |
+
+### What Gets Validated
+
+| Category | Checks |
+|----------|--------|
+| **Typography** | Orphan/widow lines, runt lines (single short words) |
+| **Tables** | Consistent column counts, non-empty headers |
+| **Spacing** | No excessive empty paragraphs |
+| **Structure** | Proper heading hierarchy (no skipped levels) |
+| **Layout** | Professional margins maintained |
+
+### Quality Output Example
+
+```
+======================================================================
+ELITE DOCUMENT POLISHER v3.0 - God-Level Flawless Edition
+======================================================================
+  Input: report.docx
+
+  Mode: Single Brand
+  Brand: McKinsey & Company
+  Output: report_mckinsey.docx
+
+  Applying brand styling with quality validation...
+----------------------------------------------------------------------
+  [✓] Created: report_mckinsey.docx
+  Quality Level: PERFECT
+----------------------------------------------------------------------
+  Brand 'McKinsey & Company' applied successfully!
+======================================================================
+```
+
+## Professional Table Formatting (v3.0)
+
+Tables are formatted with world-class standards:
+
+### Table Features
+
+| Feature | Implementation |
+|---------|----------------|
+| **Width** | 100% of content area (full page width) |
+| **Column Sizing** | Intelligent proportional based on content |
+| **Min/Max Width** | 15% minimum, 60% maximum per column |
+| **Borders** | Horizontal only, minimal vertical (nil) |
+| **Header Border** | 1.5pt accent-colored bottom border |
+| **Body Borders** | 0.5pt subtle horizontal separators |
+| **Cell Padding** | 6pt vertical, 8pt horizontal |
+| **Row Height** | 28pt header, 24pt body (minimum) |
+| **Alternating Rows** | Subtle #F8F9FA gray shading |
+
+### Before vs After
+
+**Before (Misaligned Tables):**
+- Different tables have inconsistent widths
+- Column widths don't align across tables
+- Cluttered with vertical borders
+
+**After (Professional Tables):**
+- All tables span full content width
+- Clean horizontal lines only
+- Consistent cell padding throughout
+- Professional header styling with accent colors
 
 ## Style Specifications by Brand
 
